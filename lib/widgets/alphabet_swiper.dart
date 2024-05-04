@@ -21,7 +21,7 @@ class AlphabetSwiper extends StatelessWidget {
           return Center(
             child: Text(
               alphabet[index],
-              style: const TextStyle(fontSize: 300),
+              style: Theme.of(context).textTheme.bodyLarge,
             ),
           );
         },

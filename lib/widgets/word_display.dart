@@ -18,7 +18,7 @@ class WordDisplay extends StatelessWidget {
             child: AutoSizeText(
               model.word,
               maxLines: 1,
-              style: const TextStyle(fontSize: 100),
+              style: Theme.of(context).textTheme.bodyMedium,
             ),
           ),
         );
