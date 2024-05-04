@@ -25,11 +25,21 @@ class ABC extends StatelessWidget {
       home: Scaffold(
         body: OrientationBuilder(
           builder: (BuildContext context, Orientation orientation) { 
-            if (orientation == Orientation.portrait) {
-              return const PortraitLayout();
-            } else {
-              return const LandscapeLayout();
-            }
+            var isPortrait = orientation == Orientation.portrait;
+
+            return Flex(
+              direction: isPortrait ? Axis.vertical : Axis.horizontal,
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: const <Widget>[
+                Expanded(
+                  child: AlphabetSwiper(),
+                ),
+                Expanded(
+                  child: WordDisplay(),
+                ),
+              ],
+            );
           },
         ),
         floatingActionButton: FloatingActionButton(
@@ -39,50 +49,6 @@ class ABC extends StatelessWidget {
           child: const Icon(Icons.refresh),
         )
       ),
-    );
-  }
-}
-
-class PortraitLayout extends StatelessWidget {
-  const PortraitLayout({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return const Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: <Widget>[
-        Expanded(
-          child: AlphabetSwiper(),
-        ),
-        Expanded(
-          child: WordDisplay(),
-        ) 
-      ],
-    );
-  }
-}
-
-class LandscapeLayout extends StatelessWidget {
-  const LandscapeLayout({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return const Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: <Widget>[
-        Expanded(
-          child: AlphabetSwiper(),
-        ),
-        Expanded(
-          child: WordDisplay(),
-        ),
-      ],
     );
   }
 }
