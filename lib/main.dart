@@ -1,6 +1,6 @@
 import 'package:abc/models/word.dart';
 import 'package:abc/widgets/alphabet_swiper.dart';
-import 'package:abc/widgets/words_swiper.dart';
+import 'package:abc/widgets/word_display.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show SystemChrome, SystemUiOverlayStyle;
 import 'package:provider/provider.dart';
@@ -28,10 +28,16 @@ class ABC extends StatelessWidget {
             if (orientation == Orientation.portrait) {
               return const PortraitLayout();
             } else {
-              return const Text('Landscape mode not supported');
+              return const LandscapeLayout();
             }
           },
         ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Provider.of<WordModel>(context, listen: false).shuffleWords();
+          },
+          child: const Icon(Icons.refresh),
+        )
       ),
     );
   }
@@ -48,14 +54,34 @@ class PortraitLayout extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
-        Flexible(
-          flex: 2,
+        Expanded(
           child: AlphabetSwiper(),
         ),
-        Flexible(
-          flex: 1,
-          child: WordsSwiper(),
+        Expanded(
+          child: WordDisplay(),
         ) 
+      ],
+    );
+  }
+}
+
+class LandscapeLayout extends StatelessWidget {
+  const LandscapeLayout({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return const Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: <Widget>[
+        Expanded(
+          child: AlphabetSwiper(),
+        ),
+        Expanded(
+          child: WordDisplay(),
+        ),
       ],
     );
   }
