@@ -22,6 +22,12 @@ class ABC extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Aakkosten harjoittelua',
+      theme: ThemeData(
+        textTheme: const TextTheme(
+          bodyLarge: TextStyle(fontSize: 300.0, color: Colors.black),
+          bodyMedium: TextStyle(fontSize: 100.0, color: Colors.black),
+        )
+      ),
       home: Scaffold(
         body: OrientationBuilder(
           builder: (BuildContext context, Orientation orientation) { 
