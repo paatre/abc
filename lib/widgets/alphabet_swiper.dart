@@ -14,21 +14,31 @@ class AlphabetSwiper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<WordModel>(builder: (context, model, child) {
-      return Swiper(
-        itemCount: alphabet.length,
-        itemBuilder: (context, index) {
-          return Center(
-            child: Text(
-              alphabet[index],
-              style: Theme.of(context).textTheme.bodyLarge,
-            ),
-          );
-        },
-        onIndexChanged: (index) {
-          model.letter = alphabet[index];
-        },
-      );
-    });
+    return LayoutBuilder(
+      builder: (BuildContext context, BoxConstraints constraints) { 
+        final double maxFontSize = constraints.maxHeight * 0.6;
+        return Consumer<WordModel>(
+          builder: (context, model, child) {
+            return Swiper(
+              itemCount: alphabet.length,
+              itemBuilder: (context, index) {
+                return Center(
+                  child: Text(
+                    alphabet[index],
+                    style: TextStyle(
+                      fontSize: maxFontSize ,
+                      color: Colors.black,
+                    ),
+                  ),
+                );
+              },
+              onIndexChanged: (index) {
+                model.letter = alphabet[index];
+              },
+            );
+          },
+        );
+      },
+    );
   }
 }
