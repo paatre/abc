@@ -8,8 +8,13 @@ class WordModel with ChangeNotifier {
   String _letter = 'A';
   String _word = '';
 
-  WordModel() {
-    loadWords();
+  WordModel({List<String>? initialWords}) {
+    if (initialWords != null) {
+      _allWords = initialWords;
+      filterWordsByLetter();
+    } else {
+      loadWords();
+    }
   }
 
   List<String> get words => _filteredWords;
