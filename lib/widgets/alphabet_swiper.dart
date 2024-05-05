@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_swiper_view/flutter_swiper_view.dart';
 import 'package:provider/provider.dart';
 
-final alphabet = List.unmodifiable(
-    List.generate(26, (index) => String.fromCharCode('A'.codeUnitAt(0) + index))
+final List<String> alphabet = List.unmodifiable(
+  [
+    ...List.generate(26, (index) => String.fromCharCode('A'.codeUnitAt(0) + index)),
+    'Å', 'Ä', 'Ö'
+  ]
 );
 
 class AlphabetSwiper extends StatelessWidget {
