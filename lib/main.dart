@@ -6,7 +6,12 @@ import 'package:flutter/services.dart' show SystemChrome, SystemUiOverlayStyle;
 import 'package:provider/provider.dart';
 
 void main() {
-  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      statusBarIconBrightness: Brightness.dark,
+    )
+  );
   runApp(
     ChangeNotifierProvider(
       create: (context) => WordModel(),
