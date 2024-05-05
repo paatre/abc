@@ -10,17 +10,26 @@ class WordDisplay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<WordModel>(
-      builder: (context, model, child) {
-        return Center(
-          child: Padding(
-            padding: const EdgeInsets.all(32.0),
-            child: AutoSizeText(
-              model.word,
-              maxLines: 1,
-              style: Theme.of(context).textTheme.bodyMedium,
-            ),
-          ),
+    return LayoutBuilder(
+      builder: (BuildContext context, BoxConstraints constraints) {
+        final double maxFontSize = constraints.maxHeight * 0.4;
+        return Consumer<WordModel>(
+          builder: (context, model, child) {
+            return Center(
+              child: Padding(
+                padding: const EdgeInsets.all(32.0),
+                child: AutoSizeText(
+                  model.word,
+                  maxLines: 1,
+                  style: TextStyle(
+                    fontSize: maxFontSize,
+                    letterSpacing: 2,
+                    color: Colors.black,
+                  )
+                ),
+              ),
+            );
+          }
         );
       }
     );

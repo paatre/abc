@@ -37,7 +37,6 @@ class ABC extends StatelessWidget {
         body: OrientationBuilder(
           builder: (BuildContext context, Orientation orientation) { 
             var isPortrait = orientation == Orientation.portrait;
-
             return Flex(
               direction: isPortrait ? Axis.vertical : Axis.horizontal,
               mainAxisAlignment: MainAxisAlignment.center,
