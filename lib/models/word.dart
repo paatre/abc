@@ -44,7 +44,12 @@ class WordModel with ChangeNotifier {
   }
 
   void shuffleWords() {
-    _filteredWords.shuffle();
+    if (_filteredWords.length > 1) {
+      final initialFirstWord = _filteredWords.first;
+      do {
+        _filteredWords.shuffle();
+      } while (_filteredWords.first == initialFirstWord);
+    }
     _word = _filteredWords.isNotEmpty ? _filteredWords.first : '';
     notifyListeners();
   }
