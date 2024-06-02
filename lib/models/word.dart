@@ -34,7 +34,7 @@ class WordModel with ChangeNotifier {
 
   Future<void> loadWords() async {
     try {
-      final data = await rootBundle.loadString('assets/data/words');
+      final data = await rootBundle.loadString('assets/data/words_children');
       _allWords = data.split('\n').where((word) => word.isNotEmpty).toList();
       filterWordsByLetter();
       notifyListeners();
