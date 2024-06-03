@@ -1,5 +1,7 @@
 # abc
 
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/paatre/abc/flutter.yml)
+
 ## Introduction
 
 **ABC** is a mobile application created with Flutter to help children learn the Finnish alphabet and words. The app is designed for use at home, in early childhood education, and the first years of primary school. With these use cases in mind, ABC is built to be easy and quick to use. The application contains no ads.
