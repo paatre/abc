@@ -12,12 +12,15 @@ class LetterPickerDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var orientation = MediaQuery.of(context).orientation;
+    int crossAxisCount = orientation == Orientation.portrait ? 3 : 6; // Adjust based on the orientation
+
     return Dialog(
       child: GridView.builder(
         shrinkWrap: true,
         padding: const EdgeInsets.all(16.0),
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 3,
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: crossAxisCount,
           childAspectRatio: 2.0,
           crossAxisSpacing: 10.0,
           mainAxisSpacing: 10.0,
